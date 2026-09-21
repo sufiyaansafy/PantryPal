@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AddEditItemActivity extends AppCompatActivity {
 
+    public static final String EXTRA_ITEM = "extra_pantry_item";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
