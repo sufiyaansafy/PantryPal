@@ -10,7 +10,7 @@ practical assignment at Richfield Graduate Institute of Technology.
 ## Features
 Ticked as each one is finished.
 
-- [ ] **Pantry** – add, edit and delete ingredients (name, quantity, unit, optional expiry date)
+- [x] **Pantry** – add, edit and delete ingredients (name, quantity, unit, optional expiry date)
 - [x] **Recipe library** – 20 South African home-cooking recipes stored in the database
 - [ ] **Suggested Recipes** – a *strict* rule: a recipe appears only when **every**
       ingredient is in the pantry in at least the amount the recipe needs
@@ -85,6 +85,7 @@ erDiagram
 | Date | Progress |
 |---|---|
 | 20 Sep 2026 | Project created; Supabase tables, access rules and 20 recipes added; first successful connection from the app |
+| 21 Sep 2026 | Theme, icons and all screens added; Pantry List with RecyclerView; add, edit and delete with validation |
 
 ## Author
 [Mohammed Sufiyaan Safy] · [402412276] · Richfield Graduate Institute of Technology
