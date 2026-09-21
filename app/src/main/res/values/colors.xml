@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Brand -->
+    <color name="brand_primary">#2E6B4F</color>      <!-- herb green: toolbars, buttons -->
+    <color name="brand_dark">#1F4A37</color>
+    <color name="brand_container">#D8EADF</color>
+    <color name="brand_accent">#E07A2F</color>       <!-- carrot orange: highlights -->
+    <color name="accent_container">#FBE3CE</color>
+
+    <!-- Surfaces and text -->
+    <color name="screen_background">#F7F6F1</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="text_primary">#1C1B1A</color>
+    <color name="text_secondary">#5F6B66</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Expiry status -->
+    <color name="status_warning">#A85107</color>     <!-- expires soon -->
+    <color name="status_expired">#B3261E</color>     <!-- already expired -->
 </resources>
