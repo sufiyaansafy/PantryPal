@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.IntentCompat;
 
@@ -31,8 +32,11 @@ import java.util.Locale;
  */
 public class AddEditItemActivity extends AppCompatActivity {
 
-
+    /** The name of the extra that MainActivity puts inside the Intent. */
     public static final String EXTRA_ITEM = "extra_pantry_item";
+
+    /** ROTATION FIX: key used to remember the chosen date while the screen is rebuilt. */
+    private static final String STATE_EXPIRY_DATE = "state_expiry_date";
 
     private static final DateTimeFormatter DATE_FORMAT =
             DateTimeFormatter.ofPattern("d MMM yyyy", Locale.getDefault());
@@ -68,7 +72,7 @@ public class AddEditItemActivity extends AppCompatActivity {
         clearDateButton = findViewById(R.id.clearDateButton);
         saveButton = findViewById(R.id.saveButton);
 
-        // Did the pantry screen send us an item to edit Question to Database?
+        // Did the pantry screen send us an item to edit CHECKS?
         editingItem = IntentCompat.getSerializableExtra(getIntent(), EXTRA_ITEM, PantryItem.class);
         if (editingItem == null) {
             toolbar.setTitle(R.string.title_add);
@@ -79,6 +83,12 @@ public class AddEditItemActivity extends AppCompatActivity {
             unitInput.setText(editingItem.getUnit(), false);   // false = do not filter the list
             expiryDate = editingItem.getExpiryDate();
         }
+        // ROTATION FIX: turning the phone destroys and rebuilds the screen. Android
+        // restores the typed text by itself, but not the LocalDate, so it is restored here.
+        if (savedInstanceState != null) {
+            String saved = savedInstanceState.getString(STATE_EXPIRY_DATE, "");
+            expiryDate = saved.isEmpty() ? null : LocalDate.parse(saved);
+        }
         showExpiryDate();
 
         findViewById(R.id.pickDateButton).setOnClickListener(view -> showDatePicker());
@@ -87,6 +97,13 @@ public class AddEditItemActivity extends AppCompatActivity {
             showExpiryDate();
         });
         saveButton.setOnClickListener(view -> save());
+    }
+
+    /** ROTATION FIX: called just before the screen is destroyed, so we can save the date. */
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(STATE_EXPIRY_DATE, expiryDate == null ? "" : expiryDate.toString());
     }
 
     /** Shows the chosen expiry date, or "Not set". */
@@ -169,7 +186,7 @@ public class AddEditItemActivity extends AppCompatActivity {
         return valid;
     }
 
-    /** CREATE or UPDATE, depending on how this screen was opened. */
+    /** CREATE or UPDATE, depending on how the screen was opened. */
     private void save() {
         if (!validate()) {
             return;   // the errors are already on screen
@@ -182,7 +199,7 @@ public class AddEditItemActivity extends AppCompatActivity {
                 textOf(unitInput),
                 expiryDate);
 
-        saveButton.setEnabled(false);          // stop double taps saving twice
+        saveButton.setEnabled(false);          // stops double taps saving twice
         saveButton.setText(R.string.saving);
 
         SupabaseClient.ResultCallback<Void> whenDone = new SupabaseClient.ResultCallback<Void>() {
