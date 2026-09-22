@@ -58,6 +58,27 @@
     <string name="error_quantity_too_big">That quantity is too large</string>
     <string name="error_unit">Choose a unit from the list</string>
 
+    <!-- Suggested Recipes screen -->
+    <plurals name="cook_now_summary">
+        <item quantity="one">You can cook %d recipe right now, using only what is in your pantry.</item>
+        <item quantity="other">You can cook %d recipes right now, using only what is in your pantry.</item>
+    </plurals>
+    <string name="empty_suggestions">No recipes match your pantry yet – add more ingredients.</string>
+    <string name="almost_there_heading">Almost there</string>
+    <string name="almost_there_note">Not suggested: each of these is missing exactly one ingredient.</string>
+    <string name="recipe_info">%1$d min · %2$d ingredients</string>
+    <string name="still_need">Still need: %1$s</string>
+    <string name="uses_expiring">Uses food that expires soon – cook this first</string>
+
+    <!-- Recipe Detail screen -->
+    <string name="status_can_cook">You have everything you need – happy cooking!</string>
+    <plurals name="status_missing">
+        <item quantity="one">You are missing %d ingredient (marked ✗)</item>
+        <item quantity="other">You are missing %d ingredients (marked ✗)</item>
+    </plurals>
+    <string name="ingredients_heading">Ingredients</string>
+    <string name="method_heading">Method</string>
+
     <!-- The units the app allows (same list as the CHECK rule in the database) -->
     <string-array name="units">
         <item>g</item>
