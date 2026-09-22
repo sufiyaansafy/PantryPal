@@ -12,12 +12,12 @@ Ticked as each one is finished.
 
 - [x] **Pantry** – add, edit and delete ingredients (name, quantity, unit, optional expiry date)
 - [x] **Recipe library** – 20 South African home-cooking recipes stored in the database
-- [ ] **Suggested Recipes** – a *strict* rule: a recipe appears only when **every**
+- [x] **Suggested Recipes** – a *strict* rule: a recipe appears only when **every**
       ingredient is in the pantry in at least the amount the recipe needs
-- [ ] **Smart matching** – copes with plurals (*tomato / tomatoes*), local names
+- [x] **Smart matching** – copes with plurals (*tomato / tomatoes*), local names
       (*mielie meal / maize meal*) and units (*1 kg covers 250 g*, *2 tbsp = 30 ml*)
-- [ ] **Almost there** – a separate list of recipes missing exactly one ingredient
-- [ ] **Use it first** – warnings for food that expires soon; recipes that use it are shown first
+- [x] **Almost there** – a separate list of recipes missing exactly one ingredient
+- [x] **Use it first** – warnings for food that expires soon; recipes that use it are shown first
 - [ ] **Settings** – expiry alerts, warning days and the "Almost there" list can be switched on or off
 
 ## Why Supabase (PostgreSQL)?
@@ -82,10 +82,11 @@ erDiagram
 > can't reach the database, open the Supabase dashboard and restore the project.
 
 ## Development log
-| Date | Progress |
-|---|---|
+| Date        | Progress |
+|-------------|---|
 | 20 Sep 2026 | Project created; Supabase tables, access rules and 20 recipes added; first successful connection from the app |
 | 21 Sep 2026 | Theme, icons and all screens added; Pantry List with RecyclerView; add, edit and delete with validation |
+| 22 Sep 2026 | Strict IngredientMatcher with 12 passing unit tests; Suggested Recipes, Almost there list and Recipe Detail screens |
 
 ## Author
 [Mohammed Sufiyaan Safy] · [402412276] · Richfield Graduate Institute of Technology
